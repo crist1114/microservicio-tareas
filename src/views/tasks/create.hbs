@@ -1,0 +1,24 @@
+<div>
+
+ 
+
+  <div style="width: 500px;">
+    
+  <form action="create/3" method="POST">
+
+     <input type="text" class="form-control" placeholder="Task title" name="title" style="max-width: 400px;">
+
+      <br>
+     <textarea placeholder="Task description" class="form-control" name="description" style="max-width: 400px;"></textarea>
+      <br>
+     <button type="submit" class="btn btn-primary" style="margin-left: 5px;" id="btn_send">Send</button>
+      <script>
+        var btn = document.getElementById('btn_send')
+        btn.addEventListener('click', _ => {
+            window.open("/tasks")
+        })
+      </script>
+
+  </form>
+  </div>
+</div>
