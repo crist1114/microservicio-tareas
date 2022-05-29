@@ -1,9 +1,11 @@
 function index(req, res) {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM tasks WHERE id = ?', [req.params.id], (err, tasks) => {
+    console.log(req.params.id)
+    conn.query('SELECT * FROM tasks WHERE idProyecto = ?', [req.params.id], (err, tasks) => {
       if(err) {
         res.json(err);
       }
+      console.log('las tareas son ',tasks)
       res.send(tasks);
     });
   });
@@ -36,6 +38,7 @@ function destroy(req, res) {
       if(err) {
         res.json(err);
       }
+      res.json({estado: 'se eliminó'});
     });
   })
 }
@@ -54,11 +57,10 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  const id = req.params.id;
   const data = req.body;
 
   req.getConnection((err, conn) => {
-    conn.query('UPDATE tasks SET ? WHERE id = ?', [data, id], (err, rows) => {
+    conn.query('UPDATE tasks SET estado = ?, observaciones = ?, fecha_fin = ? WHERE id = ?', [data.estado, data.observaciones, data.fecha_fin, data.id], (err, rows) => {
       if(err) {
         res.json(err);
       }
