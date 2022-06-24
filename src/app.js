@@ -39,14 +39,49 @@ app.use(
         }
     })
 );
-
 app.use(myconnection(mysql, {
-  host: 'sql10.freesqldatabase.com',
-  user: 'sql10494398',
-  password: 'TGTkfVV4i6',
+  host: 'remotemysql.com',
+  user: 'fTjRcw87Fe',
+  password: 'SZJwClPoCZ',
   port: 3306,
-  database: 'sql10494398'
+  database: 'fTjRcw87Fe'
 }, 'single'));
+
+// const dbconf = {
+//   host: 'remotemysql.com',
+//   user: 'fTjRcw87Fe',
+//   password: 'SZJwClPoCZ',
+//   database: 'fTjRcw87Fe'
+// };
+// //coneccion
+// let connection;
+
+// function handleCon(){
+//     connection = mysql.createConnection(dbconf);
+
+//     connection.connect((err)=>{
+
+//         if(err){
+//             console.error('[db err]', err);
+//             setTimeout(handleCon, 2000);
+//         }
+//         else{
+//             console.log('DB connected!');
+//         }
+//     });
+
+//     connection.on('error', err => {
+//         console.error('[db err]', err);
+
+//         if(err.code === 'PROTOCOL_CONNECTION_LOST'){
+//             handleCon();
+//         } else  {
+//             throw err;
+//         }
+//     })
+// }
+
+// handleCon();
 
 app.listen(app.get('port'), () => {
   console.log('Listening on port ', app.get('port'));
